@@ -21,4 +21,5 @@ fetch('https://www.course-api.com/javascript-store-products')
     })
     .catch(error => {
         console.error("Failed to load product. We're sorry for any inconvenience.", error);
+        alert("Failed to load products. Please try again later.")
     });
