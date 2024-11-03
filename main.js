@@ -11,10 +11,14 @@ fetch('https://www.course-api.com/javascript-store-products')
     .then(products => {
         products.forEach(product => {
             const listProduct = document.createElement('li');
-            listProduct.textContent = `${product.title} - $${product.price}`;
+            listProduct.innerHTML = `Company Name: ${product.fields.company}<br />Product Price: $${product.fields.price}<br />Product Name: ${product.fields.name}`;
             productStore.appendChild(listProduct);
+            const image = document.createElement('img');
+            image.src = product.fields.image[0].thumbnails.small.url
+            image.height = 200;
+            productStore.appendChild(image);
         });
     })
     .catch(error => {
-        console.error('There was a propblem with the fetch operation:', error);
+        console.error("Failed to load product. We're sorry for any inconvenience.", error);
     });
